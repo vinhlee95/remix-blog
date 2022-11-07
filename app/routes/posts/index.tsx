@@ -1,6 +1,6 @@
 import { json } from "@remix-run/node";
 import { useLoaderData, Link } from "@remix-run/react";
-import { getPostListing, getPosts } from "~/models/post.server";
+import { getPostListing } from "~/models/post.server";
 
 // New Awaited type to model async operations
 // See https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-5.html#the-awaited-type-and-promise-improvements
@@ -11,7 +11,7 @@ type LoaderData = {
 // Fetch posts from BE
 export const loader = async () => {
   return json<LoaderData>({
-    posts: await getPosts(),
+    posts: await getPostListing(),
   });
 };
 
@@ -19,6 +19,7 @@ export default function Posts() {
   const { posts } = useLoaderData<LoaderData>();
   return (
     <main>
+      <Link to="admin">Admin</Link>
       <h1>Posts</h1>
       <ul>
         {posts.map((post) => (
