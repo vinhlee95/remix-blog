@@ -1,5 +1,6 @@
-import { Post } from "@prisma/client";
-import { json, LoaderFunction } from "@remix-run/node";
+import type { Post } from "@prisma/client";
+import type { LoaderFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { marked } from "marked";
 import invariant from "tiny-invariant";
