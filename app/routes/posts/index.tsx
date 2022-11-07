@@ -8,6 +8,7 @@ type LoaderData = {
   posts: Awaited<ReturnType<typeof getPosts>>
 }
 
+// Fetch posts from BE
 export const loader = async () => {
   return json<LoaderData>({
     posts: await getPosts(),
@@ -15,7 +16,7 @@ export const loader = async () => {
 };
 
 export default function Posts() {
-  const { posts } = useLoaderData() as LoaderData;
+  const { posts } = useLoaderData<LoaderData>();
   return (
     <main>
       <h1>Posts</h1>
